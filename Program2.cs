@@ -14,7 +14,7 @@ namespace htel
 
         {
 
-            Console.WriteLine("\t\t\tWelcome to sydney hotel");
+            Console.WriteLine("\t\t\tWelcome to Sydney Hotel");
             int i = 0;
             string[] name = new string[20];
             int[] night = new int[20];
@@ -48,9 +48,16 @@ namespace htel
 
                     }
                 }
-                
+
                 Console.WriteLine("Enter yes/no to indicate whether you want room service:");
-                string roomService = Console.ReadLine();
+                string roomService = Console.ReadLine().ToLower().Trim();
+
+                while (roomService != "yes" && roomService != "no")
+                {
+                    Console.WriteLine("Invalid input! Please enter only 'yes' or 'no':");
+                    roomService = Console.ReadLine().ToLower().Trim();
+                }
+
                 roomservice[i] = roomService;
                 double cost=0;
                 //conditions for claculating the bill
@@ -94,8 +101,8 @@ namespace htel
             }
 
             //displaying the data in form of table
-            Console.WriteLine("\t\t\tSummery of reservation");
-            Console.WriteLine("Name\t\t\tNumber of room\t\tRoom service\t\tCharge");
+            Console.WriteLine("\t\t\tSummary of reservation");
+            Console.WriteLine("Name\t\t\tNights\t\tRoom service\t\tCharge");
             for (int j = 0; j < i; j++)
             {
                 Console.WriteLine(name [j]+ "\t\t\t"+ night[j]+"\t\t\t"+ roomservice[j]+"\t\t"+ costlist[j]);
